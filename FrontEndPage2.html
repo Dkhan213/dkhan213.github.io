@@ -5,6 +5,15 @@
     <link href="master.css" rel="stylesheet" />
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://html2canvas.hertzen.com/dist/html2canvas.js"
+    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
@@ -21,9 +30,33 @@
         font-family: "Georgia", Courier, monospace;
         font-size: x-large;
         font-weight: 500;
-        overflow: hidden;
+        overflow: scroll;
         height: 100%;
-        text-align:center;
+        text-align: center;
+      }
+
+      .invisiblebutton-1 {
+        position: absolute;
+        top: 75%;
+        left: 20%;
+        height: 33.33%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .invisiblebutton-2 {
+        position: absolute;
+        top: 75%;
+        left: -20%;
+        height: 33.33%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
       }
 
       .wrapper {
@@ -31,7 +64,6 @@
         margin-right: auto;
         margin-top: auto;
         margin-bottom: auto;
-        width: 960px;
         height: 100%;
         min-height: 100%;
       }
@@ -41,14 +73,9 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        font-size:smaller;
+        font-size: smaller;
       }
 
-      .characterInfo {
-        overflow: hidden;
-        animation-name: fadeIn;
-        animation-duration: 1.0s;
-      }
       .characterAge {
         position: absolute;
         height: 100px;
@@ -57,6 +84,7 @@
         top: 25.1%;
         transform: translate(50%, 50%);
         overflow: hidden;
+        color: black;
       }
       .characterWeight {
         position: absolute;
@@ -94,7 +122,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterHairStyle{
+      .characterHairStyle {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -103,7 +131,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterSkinTone{
+      .characterSkinTone {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -112,7 +140,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterAlignment{
+      .characterAlignment {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -121,7 +149,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterGender{
+      .characterGender {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -130,7 +158,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterRace{
+      .characterRace {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -139,7 +167,7 @@
         transform: translate(50%, 50%);
         overflow: hidden;
       }
-      .characterName{
+      .characterName {
         position: absolute;
         height: 100px;
         width: 300px;
@@ -147,9 +175,9 @@
         top: 5.8%;
         transform: translate(50%, 50%);
         overflow: hidden;
-        font-weight:900;
+        font-weight: 1000;
       }
-      .characterFamilyHistory{
+      .characterFamilyHistory {
         position: absolute;
         height: 100px;
         width: 600px;
@@ -157,34 +185,214 @@
         top: 50.3%;
         transform: translate(50%, 50%);
         overflow: hidden;
-        text-align:left;
+        text-align: left;
       }
-      
-      .characterFlaw{
+
+      .characterFlaw {
         position: absolute;
         height: 100px;
         width: 600px;
         left: -20%;
-        top: 58.5%;
+        top: 58.4%;
         transform: translate(50%, 50%);
         overflow: hidden;
-        text-align:left;
+        text-align: left;
+        opacity: 1;
       }
-      .characterTalent{
+      .characterTalent {
         position: absolute;
         height: 100px;
         width: 600px;
         left: -20%;
-        top: 67%;
+        top: 66.7%;
         transform: translate(50%, 50%);
         overflow: hidden;
-        text-align:left;
+        text-align: left;
+      }
+
+      .box-1 {
+        position: absolute;
+        top: 75%;
+        left: 20%;
+        height: 33.33%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box-2 {
+        position: absolute;
+        top: 75%;
+        left: -20%;
+        height: 33.33%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        line-height: 50px;
+        height: 50px;
+        text-align: center;
+        width: 250px;
+        cursor: pointer;
+      }
+      .btn-one {
+        color: rgba(0, 0, 0, 1);
+        font-weight: 1000;
+        transition: all 0.3s;
+        position: relative;
+        z-index: 2;
+      }
+      .btn-one span {
+        transition: all 0.3s;
+      }
+      .btn-one::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-top-color: rgb(102, 0, 0);
+        border-bottom-color: rgb(102, 0, 0);
+        transform: scale(0.1, 1);
+      }
+      .btn-one:hover span {
+        letter-spacing: 2px;
+      }
+      .btn-one:hover::before {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+      .btn-one::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: all 0.3s;
+        background-color: rgb(102, 0, 0, 0.5);
+      }
+      .btn-one:hover::after {
+        opacity: 0;
+        transform: scale(0.1, 1);
       }
     </style>
   </head>
   <body>
-      <img class="stats" src="images/statPage.png"/>
+    <img class="stats" src="images/statPage.png" />
+    <div class="buttons">
+      <div class="box-1">
+        <button
+          class="btn btn-one"
+          id="rerollButton"
+          style="
+            position: absolute;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: X-large;
+            background-color: transparent;
+            border: none;
+            color: transparent;
+          "
+          onclick="window.location.reload()"
+        ></button>
+      </div>
+      <div class="box-2">
+        <button
+          class="btn btn-one"
+          id="saveAsPdfButton"
+          style="
+            position: absolute;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: X-large;
+            background-color: transparent;
+            border: none;
+            color: transparent;
+          "
+          onclick="CreatePDFfromHTML()"
+        ></button>
+      </div>
+      <div class="invisiblebutton-1">
+        <button
+          class="button"
+          style="
+            font-family: 'Courier New', Courier, monospace;
+            font-size: X-large;
+            background: transparent;
+            border: none;
+            z-index: 10000;
+            font-weight: 1000;
+          "
+        >
+          REROLL
+        </button>
+      </div>
+      <div class="invisiblebutton-2">
+        <button
+          class="button"
+          style="
+            font-family: 'Courier New', Courier, monospace;
+            font-size: X-large;
+            background: transparent;
+            border: none;
+            z-index: 10000;
+            font-weight: 1000;
+          "
+        >
+          SAVE
+        </button>
+      </div>
     </div>
-    <div id="age1"></div>
+
+    <script>
+      function CreatePDFfromHTML() {
+        var HTML_Width = $(".charSheetDimensions").width();
+        var HTML_Height = $(".charSheetDimensions").height();
+        var top_left_margin = 15;
+        var PDF_Width = HTML_Width + top_left_margin * 2;
+        var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
+        var canvas_image_width = HTML_Width;
+        var canvas_image_height = HTML_Height;
+
+        var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".charSheetDimensions")[0]).then(function (canvas) {
+          var imgData = canvas.toDataURL("image/jpeg", 1.0);
+          var pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
+          pdf.addImage(
+            imgData,
+            "JPG",
+            top_left_margin,
+            top_left_margin,
+            canvas_image_width,
+            canvas_image_height
+          );
+          for (var i = 1; i <= totalPDFPages; i++) {
+            pdf.addPage(PDF_Width, PDF_Height);
+            pdf.addImage(
+              imgData,
+              "JPG",
+              top_left_margin,
+              -(PDF_Height * i) + top_left_margin * 4,
+              canvas_image_width,
+              canvas_image_height
+            );
+          }
+          pdf.save("Your_PDF_Name.pdf");
+        });
+      }
+    </script>
   </body>
 </html>

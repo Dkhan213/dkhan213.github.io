@@ -13,6 +13,8 @@ request.onload = function() {
     wrapper.appendChild(charSheetDimensions)
     const charSheet = document.getElementsByClassName('stats')[0]
     charSheetDimensions.appendChild(charSheet)
+    const rollButton = document.getElementsByClassName('buttons')[0]
+    charSheetDimensions.appendChild(rollButton)
     const characterData = document.createElement('div')
     characterData.setAttribute('class', 'characterInfo')
     const characterAge = document.createElement('div')
