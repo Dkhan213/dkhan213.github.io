@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RerollStatDisplayPage</title>
+    <link href="master.css" rel="stylesheet" />
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        background-image: url(images/backgroundwallpaper.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: white;
+        font-family: "Georgia", Courier, monospace;
+        font-size: x-large;
+        font-weight: 500;
+        overflow: hidden;
+        height: 100%;
+        text-align:center;
+      }
+
+      .wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 960px;
+        height: 100%;
+        min-height: 100%;
+      }
+
+      .charSheetDimensions {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size:smaller;
+      }
+
+      .characterInfo {
+        overflow: hidden;
+        animation-name: fadeIn;
+        animation-duration: 1.0s;
+      }
+      .characterAge {
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 2%;
+        top: 25.1%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterWeight {
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 2%;
+        top: 28.5%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterHeight {
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 2%;
+        top: 31.7%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterEyeColor {
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 2%;
+        top: 34.9%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterHairColor {
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 29%;
+        top: 25.2%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterHairStyle{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 29%;
+        top: 28.4%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterSkinTone{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 29%;
+        top: 31.5%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterAlignment{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 29%;
+        top: 34.9%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterGender{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 42%;
+        top: 12.1%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterRace{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 14%;
+        top: 12.1%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterName{
+        position: absolute;
+        height: 100px;
+        width: 300px;
+        left: 28%;
+        top: 5.8%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+      }
+      .characterFamilyHistory{
+        position: absolute;
+        height: 100px;
+        width: 600px;
+        left: -20%;
+        top: 50.3%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+        text-align:left;
+      }
+      
+      .characterFlaw{
+        position: absolute;
+        height: 100px;
+        width: 600px;
+        left: -20%;
+        top: 58.5%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+        text-align:left;
+      }
+      .characterTalent{
+        position: absolute;
+        height: 100px;
+        width: 600px;
+        left: -20%;
+        top: 67%;
+        transform: translate(50%, 50%);
+        overflow: hidden;
+        text-align:left;
+      }
+    </style>
+  </head>
+  <body>
+      <img class="stats" src="images/statPage.png"/>
+    </div>
+    <div id="age1"></div>
+  </body>
+</html>
